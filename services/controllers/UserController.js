@@ -1,4 +1,5 @@
 import UserModel from '../model/UserModel.js';
+import { TokenEncode } from "../utility/tokenutility.js";
 import jwt from 'jsonwebtoken';
 
 // Create a new user (Sign Up)
@@ -34,20 +35,18 @@ export const CreateUser = async (req, res) => {
 // Login User
 export const loginUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
 
-    // Check if user exists
-    const user = await UserModel.findOne({ email });
-    if (!user || user.password !== password) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+    let reqbody = req.body;
+    let data = await UserModel.findOne(reqbody)
+    if(data==null){
+      return res.json({status:"success",data: "user not found"})
+    }
+    else{
+      let token = await TokenEncode(data['email'],data['_id'])
+      res.status(200).json({ message: 'Login successful', token:token });
     }
 
-    // Generate JWT token
-    const token = jwt.sign({ userId: user._id, userType: user.user_type }, process.env.JWT_SECRET, {
-      expiresIn: '1h',
-    });
-
-    res.status(200).json({ message: 'Login successful', token, user });
+   
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
