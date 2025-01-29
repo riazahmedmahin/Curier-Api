@@ -11,6 +11,7 @@ import hpp from 'hpp';
 import cookieParser from 'cookie-parser';
 import { DATABASE,PORT,WEB_CASH,rateLimitConfig} from "./services/config/config.js";
 
+
 const app = express();
 app.set("etag",WEB_CASH)
 app.use(express.urlencoded({ extended: true }));

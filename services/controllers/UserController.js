@@ -5,23 +5,16 @@ import jwt from 'jsonwebtoken';
 // Create a new user (Sign Up)
 export const CreateUser = async (req, res) => {
   try {
-    const { name, email, password, phone_number, address, user_type } = req.body;
+    const reqbody = req.body;
 
     // Check if email already exists
-    const existingUser = await UserModel.findOne({ email });
+    const existingUser = await UserModel.findOne({ email:reqbody.email });
     if (existingUser) {
       return res.status(400).json({ message: 'Email already exists' });
     }
 
     // Create a new user
-    const newUser = new UserModel({
-      name,
-      email,
-      password, // Consider hashing the password
-      phone_number,
-      address,
-      user_type,
-    });
+    const newUser = new UserModel(reqbody);
 
     // Save the user to the database
     await newUser.save();
@@ -54,16 +47,12 @@ export const loginUser = async (req, res) => {
 
 // ReaduserProfile details by ID
 export const ReadProfile = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const user = await UserModel.findById(id).select('-password'); // Exclude password field
-
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-
-    res.status(200).json(user);
-  } catch (error) {
-    res.status(500).json({ message: 'Server error', error: error.message });
-  }
+  try{
+    let user_id = req.headers['user_id']
+    let data =await UserModel.findOne({"id":user_id})
+    return res.json({ status: "success", message: "User Profile details Sucessfull",data:data });
+}
+catch(e){
+    return res.json({ status: "fail", message: e.toString() });
+}
 };
