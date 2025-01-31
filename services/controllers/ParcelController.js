@@ -1,5 +1,7 @@
 import ParcelModel from '../model/ParcelModel.js';
-import UserModel from '../model/UserModel.js'
+import UserModel from '../model/UserModel.js';
+import Order from '../model/OrderModel.js'
+
 
 // Create a new parcel
 export const CreateParcel = async (req, res) => {
