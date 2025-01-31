@@ -3,10 +3,10 @@ import { CreateUser, loginUser, ReadProfile } from '../services/controllers/User
 import {CreateParcel,ListByParcel,ParcelDetailsById,UpdateParcel,DeleteParcel,} from '../services/controllers/ParcelController.js';
 import {
   CreateOrders,
-  getAllOrders,
-  getOrderById,
-  updateOrder,
-  deleteOrder,
+  ListByOrder,
+  OrderDetailsById,
+  UpdateOrder,
+  DeleteOrder,
 } from '../services/controllers/OrderController.js';
 
 import auth from "../services/middleware/auth.js";
@@ -16,7 +16,7 @@ const router = express.Router();
 
 // USER
 router.post('/signup', CreateUser);
-router.post('/login',loginUser); // Changed from GET to POST
+router.post('/login',loginUser); 
 router.get('/user/:id',ReadProfile);
 
 // Parcel routes
@@ -28,9 +28,9 @@ router.delete('/DeleteParcelById/:id', DeleteParcel);
 
 // Order routes
 router.post('/CreateOrders', CreateOrders);
-router.get('/orders', getAllOrders);
-router.get('/orders/:id', getOrderById);
-router.put('/orders/:id', updateOrder);
-router.delete('/orders/:id', deleteOrder);
+router.get('/ListByOrder', ListByOrder);
+router.get('/OrderDetailsById/:id', OrderDetailsById);
+router.put('/UpdateOrder/:id', UpdateOrder);
+router.delete('/DeleteOrder/:id', DeleteOrder);
 
 export default router;
