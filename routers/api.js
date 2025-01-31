@@ -1,11 +1,11 @@
 import express from "express";
 import { CreateUser, loginUser, ReadProfile } from '../services/controllers/UserController.js';
 import {
-    createParcel,
-    getAllParcels,
-    getParcelById,
-    updateParcel,
-    deleteParcel,
+  CreateParcel,
+    ListByParcel,
+    ParcelDetailsById,
+    UpdateParcel,
+    DeleteParcel,
   } from '../services/controllers/ParcelController.js';
 import auth from "../services/middleware/auth.js";
 const router = express.Router();
@@ -16,10 +16,10 @@ router.post('/login',loginUser); // Changed from GET to POST
 router.get('/user/:id',ReadProfile);
 
 // Parcel routes
-router.post('/CreateParcels', createParcel);
-router.get('/parcels', getAllParcels);
-router.get('/ParceDeatilslByID/:id', getParcelById);
-router.put('/parcels/:id', updateParcel);
-router.delete('/parcels/:id', deleteParcel);
+router.post('/CreateParcel', CreateParcel);
+router.get('/ListByParcel', ListByParcel);
+router.get('/ParcelDetailsById/:id', ParcelDetailsById);
+router.put('/UpdateParcel/:id', UpdateParcel);
+router.delete('/DeleteParcelById/:id', DeleteParcel);
 
 export default router;

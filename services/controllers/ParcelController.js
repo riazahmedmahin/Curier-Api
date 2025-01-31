@@ -2,7 +2,7 @@ import ParcelModel from '../model/ParcelModel.js';
 import UserModel from '../model/UserModel.js'
 
 // Create a new parcel
-export const createParcel = async (req, res) => {
+export const CreateParcel = async (req, res) => {
   try {
     const reqBody = req.body;
 
@@ -25,7 +25,7 @@ export const createParcel = async (req, res) => {
 };
 
 // Get all parcels
-export const getAllParcels = async (req, res) => {
+export const ListByParcel = async (req, res) => {
   try {
     const parcels = await ParcelModel.find().populate('sender_id', 'name email'); // Populate sender details
     res.status(200).json(parcels);
@@ -35,7 +35,7 @@ export const getAllParcels = async (req, res) => {
 };
 
 // Get a single parcel by ID
-export const getParcelById = async (req, res) => {
+export const ParcelDetailsById = async (req, res) => {
   try {
     const { id } = req.params;
     const parcel = await ParcelModel.findById(id).populate('sender_id', 'name email'); // Populate sender details
@@ -51,7 +51,7 @@ export const getParcelById = async (req, res) => {
 };
 
 // Update a parcel by ID
-export const updateParcel = async (req, res) => {
+export const UpdateParcel = async (req, res) => {
   try {
     const { id } = req.params;
     const reqBody = req.body;
@@ -73,7 +73,7 @@ export const updateParcel = async (req, res) => {
 };
 
 // Delete a parcel by ID
-export const deleteParcel = async (req, res) => {
+export const DeleteParcel = async (req, res) => {
   try {
     const { id } = req.params;
     const deletedParcel = await ParcelModel.findByIdAndDelete(id);
@@ -82,7 +82,7 @@ export const deleteParcel = async (req, res) => {
       return res.status(404).json({ message: 'Parcel not found' });
     }
 
-    res.status(200).json({ message: 'Parcel deleted successfully', parcel: deletedParcel });
+    res.status(200).json({ message: 'Parcel deleted successfully',});
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
