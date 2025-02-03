@@ -35,7 +35,7 @@ export const loginUser = async (req, res) => {
       return res.json({status:"success",data: "user not found"})
     }
     else{
-      let token = await TokenEncode(data['email'],data['_id'])
+      let token =  TokenEncode(data['email'],data['_id'])
       res.status(200).json({ message: 'Login successful', token:token });
     }
 

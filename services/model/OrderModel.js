@@ -11,6 +11,6 @@ const orderSchema = new mongoose.Schema({
   updated_at: { type: Date, default: Date.now },
 });
 
-const OrderModel = mongoose.model('Order', orderSchema);
+const OrderModel = mongoose.model('Orders', orderSchema);
 
-export default OrderModel; // Correct export for ES modules
+export default OrderModel; 
