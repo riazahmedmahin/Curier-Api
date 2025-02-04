@@ -2,14 +2,7 @@ import express from "express";
 import { CreateUser, loginUser, ReadProfile } from '../services/controllers/UserController.js';
 import {CreateParcel,ListByParcel,ParcelDetailsById,UpdateParcel,DeleteParcel,} from '../services/controllers/ParcelController.js';
 import {CreateOrders,ListByOrder,OrderDetailsById,UpdateOrder,DeleteOrder,} from '../services/controllers/OrderController.js';
-
-import {
-    createDelivery,
-    getAllDeliveries,
-    getDeliveryById,
-    updateDelivery,
-    deleteDelivery,
-  } from '../services/controllers/DeliveryController.js';
+import {createDelivery,getAllDeliveries,getDeliveryById,updateDelivery,deleteDelivery,} from '../services/controllers/DeliveryController.js';
 
 const router = express.Router();
 
