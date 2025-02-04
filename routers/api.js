@@ -11,11 +11,7 @@ import {
     deleteDelivery,
   } from '../services/controllers/DeliveryController.js';
 
-import auth from "../services/middleware/auth.js";
-
-
 const router = express.Router();
-
 
 // USER
 router.post('/signup', CreateUser);
