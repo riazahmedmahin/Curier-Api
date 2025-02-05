@@ -40,7 +40,7 @@ export const ListByParcel = async (req, res) => {
 export const ParcelDetailsById = async (req, res) => {
   try {
     const { id } = req.params;
-    const parcel = await ParcelModel.findById(id).populate('sender_id', 'name email'); // Populate sender details
+    const parcel = await ParcelModel.findById(id).populate('sender_id', 'name email '); // Populate sender details
 
     if (!parcel) {
       return res.status(404).json({ message: 'Parcel not found' });
