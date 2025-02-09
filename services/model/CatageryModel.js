@@ -1,16 +1,16 @@
 import mongoose from "mongoose";
 
-const DataSchema= new mongoose.Schema(
+const DataSchema = new mongoose.Schema(
     {
-        categoryname:{type: String,unique: true,required:true},
-        categotyImg:{type: String,required: true},  
+        categoryname: { type: String, unique: true, required: true },
+        categoryImg: { type: String, required: true },
     },
     {
-        timestamps:true,
-        versionKey:false
+        timestamps: true,
+        versionKey: false,
     }
-)
+);
 
-const CategoryModel = mongoose.model('categories',DataSchema)
+const CategoryModel = mongoose.model("categories", DataSchema);
 
 export default CategoryModel;
