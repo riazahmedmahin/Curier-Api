@@ -3,7 +3,7 @@ import { CreateUser, loginUser, ReadProfile } from '../services/controllers/User
 import {CreateParcel,ListByParcel,ParcelDetailsById,UpdateParcel,DeleteParcel,} from '../services/controllers/ParcelController.js';
 import {CreateOrders,ListByOrder,OrderDetailsById,UpdateOrder,DeleteOrder,} from '../services/controllers/OrderController.js';
 import {createDelivery,getAllDeliveries,getDeliveryById,updateDelivery,deleteDelivery,} from '../services/controllers/DeliveryController.js';
-
+import { ProductCategoryList } from "../services/controllers/CategoryController.js";
 const router = express.Router();
 
 // USER
@@ -31,6 +31,9 @@ router.get('/getAllDeliveries', getAllDeliveries); // Get all deliveries
 router.get('/getDeliveryById/:id', getDeliveryById); // Get a single delivery by ID
 router.put('/updateDelivery/:id', updateDelivery); // Update a delivery by ID
 router.delete('/deleteDelivery/:id', deleteDelivery); // Delete a delivery by ID
+
+// CategoryList
+router.get("/ProductCategoryList",ProductCategoryList);
 
 
 export default router;
